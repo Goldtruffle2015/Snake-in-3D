@@ -1,6 +1,8 @@
 package Components;	// Handles all in-game objects
 
 import javafx.scene.Group;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.Cylinder;
 import javafx.scene.shape.Sphere;
 import javafx.scene.transform.Rotate;
@@ -108,6 +110,10 @@ public class Arena {
 		this.edges[0].translateYProperty().set(this.length/2);
 		this.edges[0].translateZProperty().set(-this.length/2);
 		
+		PhongMaterial redMat = new PhongMaterial();
+		redMat.setDiffuseColor(Color.RED);
+		this.edges[0].setMaterial(redMat);
+		
 		this.edges[1].translateXProperty().set(0);
 		this.edges[1].translateYProperty().set(-this.length/2);
 		this.edges[1].translateZProperty().set(-this.length/2);
@@ -124,6 +130,10 @@ public class Arena {
 		this.edges[4].translateXProperty().set(-this.length/2);
 		this.edges[4].translateYProperty().set(0);
 		this.edges[4].translateZProperty().set(-this.length/2);
+		
+		PhongMaterial greenMat = new PhongMaterial();
+		greenMat.setDiffuseColor(Color.GREEN);
+		this.edges[4].setMaterial(greenMat);
 		
 		this.edges[5].translateXProperty().set(this.length/2);
 		this.edges[5].translateYProperty().set(0);
@@ -146,6 +156,10 @@ public class Arena {
 		this.edges[8].translateXProperty().set(-this.length/2);
 		this.edges[8].translateYProperty().set(this.length/2);
 		this.edges[8].translateZProperty().set(0);
+		
+		PhongMaterial blueMat = new PhongMaterial();
+		blueMat.setDiffuseColor(Color.BLUE);
+		this.edges[8].setMaterial(blueMat);
 		
 		this.edges[9].translateXProperty().set(this.length/2);
 		this.edges[9].translateYProperty().set(this.length/2);

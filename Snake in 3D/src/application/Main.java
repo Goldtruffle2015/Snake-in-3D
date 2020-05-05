@@ -1,6 +1,7 @@
 package application;
 	
 import Components.Arena;
+import Lighting.Lighting;
 import javafx.application.Application;
 import javafx.scene.Camera;
 import javafx.scene.Group;
@@ -14,7 +15,8 @@ public class Main extends Application {
 	// -- Attributes -- //
 	private static final int WIDTH = 1150;	// Sets the width of the screen
 	private static final int HEIGHT = 600;	// Sets the height of the screen
-	private Arena arena;	// Instantiates the arena
+	private Arena arena;	// Instantiates the Arena class
+	private Lighting light;	// Instantiates the Light class
 	
 	@Override
 	public void start(Stage primaryStage) {
@@ -30,6 +32,10 @@ public class Main extends Application {
 			Scene scene = new Scene(root, WIDTH, HEIGHT, true);	// Creates the window
 			scene.setFill(Color.BLACK);
 			scene.setCamera(camera);
+			
+			// Add lighting //
+			light = new Lighting();
+			root = light.addWith(root);
 			
 			// Create the arena //
 			arena = new Arena();
