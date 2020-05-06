@@ -32,8 +32,8 @@ public class MouseControls {
 	// -- Methods -- //
 	public void setMousePress(Scene scene) {
 		scene.setOnMousePressed(event -> {
-			this.anchorX = scene.getX();	// Gets the current x-coordinate
-			this.anchorY = scene.getY();	// Gets the current y-coordinate
+			this.anchorX = event.getSceneX();	// Gets the current x-coordinate
+			this.anchorY = event.getSceneY();	// Gets the current y-coordinate
 			this.anchorAngleX = this.angleX.get();	// Gets the current x-angle the object was rotated by
 			this.anchorAngleY = this.angleY.get();	// Gets the current y-angle the object was rotated by
 		});
