@@ -112,13 +112,13 @@ public class Arena {
 		this.edges[0].translateYProperty().set(this.length/2);
 		this.edges[0].translateZProperty().set(-this.length/2);
 		
-		PhongMaterial redMat = new PhongMaterial();
-		redMat.setDiffuseColor(Color.RED);
-		this.edges[0].setMaterial(redMat);
-		
 		this.edges[1].translateXProperty().set(0);
 		this.edges[1].translateYProperty().set(-this.length/2);
 		this.edges[1].translateZProperty().set(-this.length/2);
+		
+		PhongMaterial redMat = new PhongMaterial();
+		redMat.setDiffuseColor(Color.RED);
+		this.edges[1].setMaterial(redMat);
 		
 		this.edges[2].translateXProperty().set(0);
 		this.edges[2].translateYProperty().set(this.length/2);
@@ -159,10 +159,6 @@ public class Arena {
 		this.edges[8].translateYProperty().set(this.length/2);
 		this.edges[8].translateZProperty().set(0);
 		
-		PhongMaterial blueMat = new PhongMaterial();
-		blueMat.setDiffuseColor(Color.BLUE);
-		this.edges[8].setMaterial(blueMat);
-		
 		this.edges[9].translateXProperty().set(this.length/2);
 		this.edges[9].translateYProperty().set(this.length/2);
 		this.edges[9].translateZProperty().set(0);
@@ -170,6 +166,10 @@ public class Arena {
 		this.edges[10].translateXProperty().set(-this.length/2);
 		this.edges[10].translateYProperty().set(-this.length/2);
 		this.edges[10].translateZProperty().set(0);
+		
+		PhongMaterial blueMat = new PhongMaterial();
+		blueMat.setDiffuseColor(Color.BLUE);
+		this.edges[10].setMaterial(blueMat);
 		
 		this.edges[11].translateXProperty().set(this.length/2);
 		this.edges[11].translateYProperty().set(-this.length/2);

@@ -76,6 +76,7 @@ public class Main extends Application {
 					if (gameLoop.getDelta() > 1) {
 						gameLoop.setDelta(gameLoop.getDelta() - 1);
 						// Update //
+						player.Move();
 					}
 					// Render //
 				}
