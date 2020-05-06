@@ -1,5 +1,6 @@
 package Components;	// Handles all in-game objects
 
+import Movement.SmartGroup;
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
@@ -10,7 +11,7 @@ import javafx.scene.transform.Transform;
 
 public class Arena {
 	// -- Attributes -- //
-	private final int length = 400;	// Defines the length of the arena
+	private final int length = 800;	// Defines the length of the arena
 	private final int radius = 5;	// Defines the radius of the nodes
 	private Sphere[] nodes = new Sphere[8];	// Stores nodes
 	private Cylinder[] edges = new Cylinder[12];	// Stores the edges
@@ -21,7 +22,7 @@ public class Arena {
 		createEdges();	// Sets up the edges
 	}
 	
-	public Group addWith(Group root) {	// Adds the pieces of the arena to the root group
+	public SmartGroup addWith(SmartGroup root) {	// Adds the pieces of the arena to the root group
 		// Add nodes //
 		for (int i=0;i<8;i++) {
 			root.getChildren().add(this.nodes[i]);
