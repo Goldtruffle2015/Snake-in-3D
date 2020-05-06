@@ -9,6 +9,7 @@ public class SmartGroup extends Group {
 	Rotate r;
 	Transform t = new Rotate();
 	
+	// -- Methods -- //
 	public void rotateByX(int a) {	// Handles rotations along X-axis
 		r = new Rotate(a, Rotate.X_AXIS);	// Creates a rotation 
 		t = t.createConcatenation(r);	// Adds r to sequence of transformations to perform

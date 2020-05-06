@@ -1,6 +1,7 @@
 package application;
 	
 import Components.Arena;
+import Components.Player;
 import Lighting.Lighting;
 import Movement.MouseControls;
 import Movement.SmartGroup;
@@ -17,8 +18,10 @@ public class Main extends Application {
 	// -- Attributes -- //
 	private static final int WIDTH = 1150;	// Sets the width of the screen
 	private static final int HEIGHT = 600;	// Sets the height of the screen
+	
 	private Arena arena;	// Instantiates the Arena class
 	private Lighting light;	// Instantiates the Light class
+	private Player player;
 	private MouseControls mousecontrols;	// Instantiates the mouse controls class
 	
 	@Override
@@ -28,7 +31,7 @@ public class Main extends Application {
 			Camera camera = new PerspectiveCamera(true);
 			camera.setNearClip(1000);
 			camera.setFarClip(10000);
-			camera.translateZProperty().set(-2500);
+			camera.translateZProperty().set(-3000);
 			
 			// Create the group containers //
 			SmartGroup game = new SmartGroup();	// Contains all the components of the screen that rotate
@@ -40,13 +43,16 @@ public class Main extends Application {
 			
 			// Add lighting //
 			light = new Lighting();	// Instantiate the lighting class
+			root = light.addWith(root);
 			
 			// Create the arena //
 			arena = new Arena();	// Instantiate the arena class
 			game = arena.addWith(game);
 			
-			// Add components to root //
-			root = light.addWith(root);
+			// Add the snake //
+			player = new Player();
+			player.addBody(0, 0, 0);
+			game = player.addWith(game);
 			
 			// Mouse Controls //
 			mousecontrols = new MouseControls(game);

@@ -22,6 +22,7 @@ public class Arena {
 		createEdges();	// Sets up the edges
 	}
 	
+	// -- Methods -- //
 	public SmartGroup addWith(SmartGroup root) {	// Adds the pieces of the arena to the root group
 		// Add nodes //
 		for (int i=0;i<8;i++) {

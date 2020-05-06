@@ -14,6 +14,7 @@ public class Lighting {
 		this.light.setColor(Color.WHITE);
 	}
 	
+	// -- Methods -- //
 	public Group addWith(Group root) {	// Adds lightsource to root
 		root.getChildren().add(this.light);
 		return root;
