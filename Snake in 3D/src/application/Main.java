@@ -2,6 +2,7 @@ package application;
 	
 import Components.Arena;
 import Components.Player;
+import Components.Target;
 import GameLoop.GameLoop;
 import Lighting.Lighting;
 import Movement.MouseControls;
@@ -24,7 +25,8 @@ public class Main extends Application {
 	
 	private static Arena arena;	// Instantiates the Arena class
 	private static Lighting light;	// Instantiates the Light class
-	private static Player player;
+	private static Player player;	// Instantiates the snake
+	private static Target target;	// Instantiates the target
 	private static MouseControls mousecontrols;	// Instantiates the mouse controls class
 	private static GameLoop gameLoop;
 	
@@ -57,6 +59,10 @@ public class Main extends Application {
 			player = new Player();
 			player.addBody(0, 0, 0);
 			game = player.addWith(game);
+			
+			// Add the target //
+			target = new Target();
+			game = target.addWith(game);
 			
 			// Mouse Controls //
 			mousecontrols = new MouseControls(game);
