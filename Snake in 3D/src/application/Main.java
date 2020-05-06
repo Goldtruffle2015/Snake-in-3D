@@ -12,6 +12,7 @@ import javafx.scene.Camera;
 import javafx.scene.Group;
 import javafx.scene.PerspectiveCamera;
 import javafx.scene.Scene;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
@@ -61,6 +62,44 @@ public class Main extends Application {
 			mousecontrols = new MouseControls(game);
 			mousecontrols.setMousePress(scene);
 			mousecontrols.setMouseDrag(scene);
+			
+			// Keyboard inputs //
+			primaryStage.addEventHandler(KeyEvent.KEY_PRESSED, event -> {
+				switch (event.getCode()) {
+					case W:	// Positive Z-Axis
+						player.setXVel(0);
+						player.setYVel(0);
+						player.setZVel(1);
+						break;
+					case A:	// Negative X-Axis
+						player.setXVel(-1);
+						player.setYVel(0);
+						player.setZVel(0);
+						break;
+					case S:	// Negative Z-Axis
+						player.setXVel(0);
+						player.setYVel(0);
+						player.setZVel(-1);
+						break;
+					case D:	// Positive X-Axis
+						player.setXVel(1);
+						player.setYVel(0);
+						player.setZVel(0);
+						break;
+					case E:	// Negative Y-Axis
+						player.setXVel(0);
+						player.setYVel(-1);
+						player.setZVel(0);
+						break;
+					case Q:	// Positive Y-Axis
+						player.setXVel(0);
+						player.setYVel(1);
+						player.setZVel(0);
+						break;
+					default:
+						break;
+				}
+			});
 			
 			primaryStage.setTitle("Snake");
 			primaryStage.setScene(scene);

@@ -21,6 +21,17 @@ public class Player {	// Contains bodies
 	}
 	
 	// -- Setter -- //
+	public void setXVel(int xVel) {
+		this.xVel = xVel;
+	}
+	
+	public void setYVel(int yVel) {
+		this.yVel = yVel;
+	}
+	
+	public void setZVel(int zVel) {
+		this.zVel = zVel;
+	}
 	
 	// -- Getter -- //
 	
