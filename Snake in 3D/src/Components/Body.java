@@ -13,7 +13,7 @@ public class Body {	// Constructs the actual snake
 	
 	// -- Constructor -- //
 	public Body(int x, int y, int z) {
-		this.box = new Box(SIZE, SIZE, SIZE);
+		this.box = new Box(this.SIZE, this.SIZE, this.SIZE);
 		this.x = x + this.SIZE/2;	// Set the x-coordinate
 		this.y = y + this.SIZE/2;	// Set the y-coordinate
 		this.z = z + this.SIZE/2;	// Set the z-coordinate
@@ -28,15 +28,15 @@ public class Body {	// Constructs the actual snake
 	
 	// -- Setter -- //
 	public void setX(int x) {
-		this.x = x;
+		this.x = x + this.SIZE/2;
 	}
 	
 	public void setY(int y) {
-		this.y = y;
+		this.y = y + this.SIZE/2;
 	}
 	
 	public void setZ(int z) {
-		this.z = z;
+		this.z = z + this.SIZE/2;
 	}
 	
 	// -- Setter -- //

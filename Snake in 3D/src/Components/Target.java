@@ -15,9 +15,10 @@ public class Target {	// This is what the snake eats
 	public Target() {
 		this.box = new Box(this.SIZE, this.SIZE, this.SIZE);
 		
-		this.x = (int) ((Math.random() * 39 - 20) * 20.0 + this.SIZE/2);
-		this.y = (int) ((Math.random() * 39 - 20) * 20.0 + this.SIZE/2);
-		this.z = (int) ((Math.random() * 39 - 20) * 20.0 + this.SIZE/2);
+		this.x = (int) ((Math.round(Math.random() * 39) - 20) * 20 + this.SIZE/2);
+		this.y = (int) ((Math.round(Math.random() * 39) - 20) * 20 + this.SIZE/2);
+		this.z = (int) ((Math.round(Math.random() * 39) - 20) * 20 + this.SIZE/2);
+		
 		
 		this.box.translateXProperty().set(this.x);
 		this.box.translateYProperty().set(this.y);

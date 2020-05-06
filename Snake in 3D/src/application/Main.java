@@ -70,42 +70,7 @@ public class Main extends Application {
 			mousecontrols.setMouseDrag(scene);
 			
 			// Keyboard inputs //
-			primaryStage.addEventHandler(KeyEvent.KEY_PRESSED, event -> {
-				switch (event.getCode()) {
-					case W:	// Positive Z-Axis
-						player.setXVel(0);
-						player.setYVel(0);
-						player.setZVel(1);
-						break;
-					case A:	// Negative X-Axis
-						player.setXVel(-1);
-						player.setYVel(0);
-						player.setZVel(0);
-						break;
-					case S:	// Negative Z-Axis
-						player.setXVel(0);
-						player.setYVel(0);
-						player.setZVel(-1);
-						break;
-					case D:	// Positive X-Axis
-						player.setXVel(1);
-						player.setYVel(0);
-						player.setZVel(0);
-						break;
-					case E:	// Negative Y-Axis
-						player.setXVel(0);
-						player.setYVel(-1);
-						player.setZVel(0);
-						break;
-					case Q:	// Positive Y-Axis
-						player.setXVel(0);
-						player.setYVel(1);
-						player.setZVel(0);
-						break;
-					default:
-						break;
-				}
-			});
+			keyInputs(primaryStage);
 			
 			primaryStage.setTitle("Snake");
 			primaryStage.setScene(scene);
@@ -121,7 +86,7 @@ public class Main extends Application {
 					if (gameLoop.getDelta() > 1) {
 						gameLoop.setDelta(gameLoop.getDelta() - 1);
 						// Update //
-						player.Move();
+						update();
 					}
 					// Render //
 				}
@@ -130,6 +95,49 @@ public class Main extends Application {
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public void keyInputs(Stage stage) {	// Where key inputs happen
+		stage.addEventHandler(KeyEvent.KEY_PRESSED, event -> {
+			switch (event.getCode()) {
+				case W:	// Positive Z-Axis
+					player.setXVel(0);
+					player.setYVel(0);
+					player.setZVel(1);
+					break;
+				case A:	// Negative X-Axis
+					player.setXVel(-1);
+					player.setYVel(0);
+					player.setZVel(0);
+					break;
+				case S:	// Negative Z-Axis
+					player.setXVel(0);
+					player.setYVel(0);
+					player.setZVel(-1);
+					break;
+				case D:	// Positive X-Axis
+					player.setXVel(1);
+					player.setYVel(0);
+					player.setZVel(0);
+					break;
+				case E:	// Negative Y-Axis
+					player.setXVel(0);
+					player.setYVel(-1);
+					player.setZVel(0);
+					break;
+				case Q:	// Positive Y-Axis
+					player.setXVel(0);
+					player.setYVel(1);
+					player.setZVel(0);
+					break;
+				default:
+					break;
+			}
+		});
+	}
+	
+	public void update() {	// Where all updates happen
+		player.Move();
 	}
 	
 	public static void main(String[] args) {
