@@ -78,7 +78,7 @@ public class Main extends Application {
 			primaryStage.show();
 			
 			// Game Loop //
-			gameLoop = new GameLoop(3);	// Instantiate the game loop
+			gameLoop = new GameLoop(4);	// Instantiate the game loop
 			gameLoop.setLastTime(System.nanoTime());
 			AnimationTimer timer = new AnimationTimer() {
 				@Override
@@ -168,6 +168,15 @@ public class Main extends Application {
 				player.getZ() < -arena.getLength()/2 ||
 				player.getZ() > arena.getLength()/2) {
 			stage.close();
+		}
+		
+		// Self Collision //
+		for (int i=player.getBody().size() - 1;i>0;i--) {
+			if (player.getBody().get(0).getX() == player.getBody().get(i).getX() &&
+					player.getBody().get(0).getY() == player.getBody().get(i).getY() &&
+					player.getBody().get(0).getZ() == player.getBody().get(i).getZ()) {
+				stage.close();
+			}
 		}
 	}
 	
