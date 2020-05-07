@@ -29,6 +29,8 @@ public class Main extends Application {
 	private static Target target;	// Instantiates the target
 	private static MouseControls mousecontrols;	// Instantiates the mouse controls class
 	private static GameLoop gameLoop;
+	private static Group root;
+	private static SmartGroup game;
 	
 	@Override
 	public void start(Stage primaryStage) {
@@ -40,8 +42,8 @@ public class Main extends Application {
 			camera.translateZProperty().set(-3000);
 			
 			// Create the group containers //
-			SmartGroup game = new SmartGroup();	// Contains all the components of the screen that rotate
-			Group root = new Group();	// Contains everything
+			game = new SmartGroup();	// Contains all the components of the screen that rotate
+			root = new Group();	// Contains everything
 			root.getChildren().add(game);
 			Scene scene = new Scene(root, WIDTH, HEIGHT, true);	// Creates the window
 			scene.setFill(Color.BLACK);
@@ -57,8 +59,7 @@ public class Main extends Application {
 			
 			// Add the snake //
 			player = new Player();
-			player.addBody(0, 0, 0);
-			game = player.addWith(game);
+			game = player.addBody(game, 0, 0, 0);
 			
 			// Add the target //
 			target = new Target();
@@ -86,7 +87,7 @@ public class Main extends Application {
 					if (gameLoop.getDelta() > 1) {
 						gameLoop.setDelta(gameLoop.getDelta() - 1);
 						// Update //
-						update(primaryStage);
+						update(game, primaryStage);
 					}
 					// Render //
 				}
@@ -148,15 +149,16 @@ public class Main extends Application {
 		});
 	}
 	
-	public void update(Stage stage) {	// Where all updates happen
-		player.Move();	// Moves the snake
-		
+	public void update(SmartGroup group, Stage stage) {	// Where all updates happen
 		// Check snake-target collision //
 		if (player.getBody().get(0).getX() == target.getX() &&
 				player.getBody().get(0).getY() == target.getY() &&
 				player.getBody().get(0).getZ() == target.getZ()) {
 			target.reposition();
+			group = player.addBody(group, 0, 0, 0);
 		}
+		
+		player.Move();	// Moves the snake
 		
 		// Boundary collision //
 		if (player.getX() < -arena.getLength()/2 || 

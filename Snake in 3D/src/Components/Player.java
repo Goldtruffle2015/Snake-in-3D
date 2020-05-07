@@ -62,16 +62,11 @@ public class Player {	// Contains bodies
 		return this.z;
 	}
 	
-	// -- Methods -- //
-	public SmartGroup addWith(SmartGroup group) {
-		for (int i=0;i<this.bodies.size();i++) {
-			group = this.bodies.get(i).addWith(group);
-		}
-		return group;
-	}
-	
-	public void addBody(int x, int y, int z) {
+	// -- Methods -- //	
+	public SmartGroup addBody(SmartGroup group, int x, int y, int z) {
 		this.bodies.add(new Body(x, y, z));
+		group = this.bodies.get(this.bodies.size() - 1).addWith(group);
+		return group;
 	}
 	
 	public void Move() {
@@ -85,9 +80,9 @@ public class Player {	// Contains bodies
 				this.bodies.get(i).setY(this.y);
 				this.bodies.get(i).setZ(this.z);
 			} else {
-				this.bodies.get(i).setX(this.bodies.get(i - 1).getX());
-				this.bodies.get(i).setY(this.bodies.get(i - 1).getY());
-				this.bodies.get(i).setZ(this.bodies.get(i - 1).getZ());
+				this.bodies.get(i).setX(this.bodies.get(i - 1).getX() - this.bodies.get(i - 1).getSize()/2);
+				this.bodies.get(i).setY(this.bodies.get(i - 1).getY() - this.bodies.get(i - 1).getSize()/2);
+				this.bodies.get(i).setZ(this.bodies.get(i - 1).getZ() - this.bodies.get(i - 1).getSize()/2);
 			}
 			this.bodies.get(i).setPos();
 		}

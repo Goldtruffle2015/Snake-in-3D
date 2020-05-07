@@ -59,6 +59,10 @@ public class Body {	// Constructs the actual snake
 		return this.z;
 	}
 	
+	public int getSize() {
+		return this.SIZE;
+	}
+	
 	// -- Methods -- //
 	public SmartGroup addWith(SmartGroup group) {
 		group.getChildren().add(this.box);
