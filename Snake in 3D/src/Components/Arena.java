@@ -22,6 +22,13 @@ public class Arena {
 		createEdges();	// Sets up the edges
 	}
 	
+	// -- Setter -- //
+	
+	// -- Getter -- //
+	public int getLength() {
+		return this.length;
+	}
+	
 	// -- Methods -- //
 	public SmartGroup addWith(SmartGroup root) {	// Adds the pieces of the arena to the root group
 		// Add nodes //

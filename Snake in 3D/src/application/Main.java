@@ -86,7 +86,7 @@ public class Main extends Application {
 					if (gameLoop.getDelta() > 1) {
 						gameLoop.setDelta(gameLoop.getDelta() - 1);
 						// Update //
-						update();
+						update(primaryStage);
 					}
 					// Render //
 				}
@@ -148,12 +148,24 @@ public class Main extends Application {
 		});
 	}
 	
-	public void update() {	// Where all updates happen
-		player.Move();
+	public void update(Stage stage) {	// Where all updates happen
+		player.Move();	// Moves the snake
+		
+		// Check snake-target collision //
 		if (player.getBody().get(0).getX() == target.getX() &&
 				player.getBody().get(0).getY() == target.getY() &&
 				player.getBody().get(0).getZ() == target.getZ()) {
 			target.reposition();
+		}
+		
+		// Boundary collision //
+		if (player.getX() < -arena.getLength()/2 || 
+				player.getX() > arena.getLength()/2 ||
+				player.getY() < -arena.getLength()/2 ||
+				player.getY() > arena.getLength()/2 ||
+				player.getZ() < -arena.getLength()/2 ||
+				player.getZ() > arena.getLength()/2) {
+			stage.close();
 		}
 	}
 	

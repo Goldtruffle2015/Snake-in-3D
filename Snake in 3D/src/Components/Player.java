@@ -50,6 +50,18 @@ public class Player {	// Contains bodies
 		return this.bodies;
 	}
 	
+	public int getX() {
+		return this.x;
+	}
+	
+	public int getY() {
+		return this.y;
+	}
+	
+	public int getZ() {
+		return this.z;
+	}
+	
 	// -- Methods -- //
 	public SmartGroup addWith(SmartGroup group) {
 		for (int i=0;i<this.bodies.size();i++) {
