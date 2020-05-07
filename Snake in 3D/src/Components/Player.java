@@ -34,6 +34,21 @@ public class Player {	// Contains bodies
 	}
 	
 	// -- Getter -- //
+	public int getXVel() {
+		return this.xVel;
+	}
+	
+	public int getYVel() {
+		return this.yVel;
+	}
+	
+	public int getZVel() {
+		return this.zVel;
+	}
+	
+	public ArrayList<Body> getBody() {
+		return this.bodies;
+	}
 	
 	// -- Methods -- //
 	public SmartGroup addWith(SmartGroup group) {

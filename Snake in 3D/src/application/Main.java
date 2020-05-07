@@ -77,7 +77,7 @@ public class Main extends Application {
 			primaryStage.show();
 			
 			// Game Loop //
-			gameLoop = new GameLoop(6);	// Instantiate the game loop
+			gameLoop = new GameLoop(3);	// Instantiate the game loop
 			gameLoop.setLastTime(System.nanoTime());
 			AnimationTimer timer = new AnimationTimer() {
 				@Override
@@ -101,34 +101,46 @@ public class Main extends Application {
 		stage.addEventHandler(KeyEvent.KEY_PRESSED, event -> {
 			switch (event.getCode()) {
 				case W:	// Positive Z-Axis
-					player.setXVel(0);
-					player.setYVel(0);
-					player.setZVel(1);
+					if (player.getZVel() != -1) {
+						player.setXVel(0);
+						player.setYVel(0);
+						player.setZVel(1);
+					}
 					break;
 				case A:	// Negative X-Axis
-					player.setXVel(-1);
-					player.setYVel(0);
-					player.setZVel(0);
+					if (player.getXVel() != 1) {
+						player.setXVel(-1);
+						player.setYVel(0);
+						player.setZVel(0);
+					}
 					break;
 				case S:	// Negative Z-Axis
-					player.setXVel(0);
-					player.setYVel(0);
-					player.setZVel(-1);
+					if (player.getZVel() != 1) {
+						player.setXVel(0);
+						player.setYVel(0);
+						player.setZVel(-1);
+					}
 					break;
 				case D:	// Positive X-Axis
-					player.setXVel(1);
-					player.setYVel(0);
-					player.setZVel(0);
+					if (player.getXVel() != -1) {
+						player.setXVel(1);
+						player.setYVel(0);
+						player.setZVel(0);
+					}
 					break;
 				case E:	// Negative Y-Axis
-					player.setXVel(0);
-					player.setYVel(-1);
-					player.setZVel(0);
+					if (player.getYVel() != 1) {
+						player.setXVel(0);
+						player.setYVel(-1);
+						player.setZVel(0);
+					}
 					break;
 				case Q:	// Positive Y-Axis
-					player.setXVel(0);
-					player.setYVel(1);
-					player.setZVel(0);
+					if (player.getYVel() != -1 ) {
+						player.setXVel(0);
+						player.setYVel(1);
+						player.setZVel(0);
+					}
 					break;
 				default:
 					break;
@@ -138,6 +150,11 @@ public class Main extends Application {
 	
 	public void update() {	// Where all updates happen
 		player.Move();
+		if (player.getBody().get(0).getX() == target.getX() &&
+				player.getBody().get(0).getY() == target.getY() &&
+				player.getBody().get(0).getZ() == target.getZ()) {
+			target.reposition();
+		}
 	}
 	
 	public static void main(String[] args) {

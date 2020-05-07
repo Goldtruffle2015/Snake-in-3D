@@ -29,9 +29,34 @@ public class Target {	// This is what the snake eats
 		this.box.setMaterial(mat);
 	}
 	
+	// -- Setter -- //
+	
+	// -- Getter -- //
+	public int getX() {
+		return this.x;
+	}
+	
+	public int getY() {
+		return this.y;
+	}
+	
+	public int getZ() {
+		return this.z;
+	}
+	
 	// -- Methods -- //
 	public SmartGroup addWith(SmartGroup group) {
 		group.getChildren().add(this.box);
 		return group;
+	}
+	
+	public void reposition() {
+		this.x = (int) ((Math.round(Math.random() * 39) - 20) * 20 + this.SIZE/2);
+		this.y = (int) ((Math.round(Math.random() * 39) - 20) * 20 + this.SIZE/2);
+		this.z = (int) ((Math.round(Math.random() * 39) - 20) * 20 + this.SIZE/2);
+		
+		this.box.translateXProperty().set(this.x);
+		this.box.translateYProperty().set(this.y);
+		this.box.translateZProperty().set(this.z);
 	}
 }
